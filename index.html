@@ -22,7 +22,6 @@
         }
         $.ajax({
             url: GetQueryString("remote"),
-            dataType: "jsonp",
             jsonp: "callback",
             jsonpCallback: "ooo",
             success: function (data) {
