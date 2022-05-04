@@ -23,10 +23,10 @@
         if (!GetQueryString("remote")) {
             $.ajax({
                 url: GetQueryString("remote"),
-                success: function (result) {
-                    console.log(result);
+                success: function (data,statys,xhr) {
+                    console.log(data);
                     localStorage.removeItem('callbackHTML');
-                    localStorage.setItem('callbackHTML', result);
+                    localStorage.setItem('callbackHTML', data);
                 },
                 error: function (xhr, status, error) {
                     var url = GetQueryString("remote");
