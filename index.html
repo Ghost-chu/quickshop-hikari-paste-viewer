@@ -12,7 +12,7 @@
 <body style="max-width: 70em !important;">
     <main>
         <h1 id="title">Welcome to QuickShop-Hikari Paste Viewer</h1>
-        <p id="description">Type <pre>/qs paste</pre> in game to create a paste.</p>
+        <p id="description">Type <code>/qs paste</code> in game to create a paste.</p>
     </main>
     <script>
         function GetQueryString(name) {
@@ -29,9 +29,8 @@
                 success: function (data, status, xhr) {
                     console.log(data);
                     localStorage.removeItem('callbackHTML');
-                    localStorage.setItem('callbackHML', data);
+                    localStorage.setItem('callbackHTML', data);
                     alert(data);
-                    window.location.href = 'callback.html';
                 },
                 error: function (xhr, status, error) {
                     var url = GetQueryString("remote");
