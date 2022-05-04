@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>QuickShop-Hikari // Paste Reader</title>
+    <link rel="stylesheet" href="https://unpkg.com/sakura.css/css/sakura.css" type="text/css">
+    <script src="https://unpkg.com/jquery@3.6.0/dist/jquery.min.js"></script>
+
+</head>
+
+<body style="max-width: 70em !important;">
+    <main>
+        <h1>Loading...</h1>
+        <p>Please wait... Paste reader are retrieve the content from remote server...</p>
+    </main>
+    <script>
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]); return null;
+        }
+        $.ajax({
+            url: GetQueryString("remote"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "ooo",
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    </script>
+</body>
+
+
+<footer>
+
+</footer>
+
+</html>
