@@ -27,7 +27,7 @@
             success: function (data) {
                 console.log(data);
                 localStorage.removeItem('callbackHTML');
-                localStorage.setItem('callbackHTML',html);
+                localStorage.setItem('callbackHTML',data);
                 window.location.href = '/callback.html';
             },
             error: function(xhr, status, error){
