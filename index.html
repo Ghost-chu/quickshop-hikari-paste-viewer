@@ -25,7 +25,7 @@
             $("#description").text("Please wait... Paste viewer are retrieve the content from remote server...");
 
             $.ajax({
-                url: GetQueryString("remote"),
+                url: "https://quickshop-proxy.ghostchu.workers.dev/?url="+GetQueryString("remote"),
                 success: function (response, status, xhr) {
                     localStorage.removeItem('callbackHTML');
                     localStorage.setItem('callbackHTML', response.data);
