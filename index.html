@@ -28,7 +28,7 @@
                 console.log(data);
                 localStorage.removeItem('callbackHTML');
                 localStorage.setItem('callbackHTML',data);
-                window.location.href = './callback.html';
+                window.location.href = 'callback.html';
             },
             error: function(xhr, status, error){
                 var url = GetQueryString("remote");
