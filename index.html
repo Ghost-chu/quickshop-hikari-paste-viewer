@@ -20,23 +20,22 @@
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return unescape(r[2]); return null;
         }
-        $.ajax({
-            url: GetQueryString("remote"),
-            jsonp: "callback",
-            jsonpCallback: "ooo",
-            success: function (data) {
-                console.log(data);
-                localStorage.removeItem('callbackHTML');
-                localStorage.setItem('callbackHTML',data);
-                window.location.href = 'callback.html';
-            },
-            error: function(xhr, status, error){
-                var url = GetQueryString("remote");
-                $("#title").text("Failed to load.");
-                $("#description").text("Viewer cannot fetch the context from "+url+", try press F5 to try again");
-            }
-            
-        });
+        if (!GetQueryString("remote")) {
+            $.ajax({
+                url: GetQueryString("remote"),
+                success: function (result) {
+                    console.log(result);
+                    localStorage.removeItem('callbackHTML');
+                    localStorage.setItem('callbackHTML', result);
+                    window.location.href = 'callback.html';
+                },
+                error: function (xhr, status, error) {
+                    var url = GetQueryString("remote");
+                    $("#title").text("Failed to load.");
+                    $("#description").text("Viewer cannot fetch the context from " + url + ", try press F5 to try again");
+                },
+            });
+        }
     </script>
 </body>
 
