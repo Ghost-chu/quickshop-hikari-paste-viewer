@@ -29,7 +29,8 @@
                 success: function (data, status, xhr) {
                     console.log(data);
                     localStorage.removeItem('callbackHTML');
-                    localStorage.setItem('callbackHTML', data);
+                    localStorage.setItem('callbackHML', data);
+                    alert(data);
                     window.location.href = 'callback.html';
                 },
                 error: function (xhr, status, error) {
