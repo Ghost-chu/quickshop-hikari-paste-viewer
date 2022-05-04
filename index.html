@@ -11,8 +11,8 @@
 
 <body style="max-width: 70em !important;">
     <main>
-        <h1>Loading...</h1>
-        <p>Please wait... Paste reader are retrieve the content from remote server...</p>
+        <h1 id="title">Loading...</h1>
+        <p id="description">Please wait... Paste reader are retrieve the content from remote server...</p>
     </main>
     <script>
         function GetQueryString(name) {
@@ -26,7 +26,16 @@
             jsonpCallback: "ooo",
             success: function (data) {
                 console.log(data);
+                localStorage.removeItem('callbackHTML');
+                localStorage.setItem('callbackHTML',html);
+                window.location.href = '/callback.html';
+            },
+            error: function(xhr, status, error){
+                var url = GetQueryString("remote");
+                $("#title").text("Failed to load.");
+                $("#description").text("Viewer cannot fetch the context from "+url+", try press F5 to try again");
             }
+            
         });
     </script>
 </body>
