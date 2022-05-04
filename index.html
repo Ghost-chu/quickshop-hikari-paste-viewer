@@ -28,14 +28,15 @@
                 url: GetQueryString("remote"),
                 success: function (data, status, xhr) {
                     console.log(data);
+                    console.log(data.data);
                     localStorage.removeItem('callbackHTML');
-                    localStorage.setItem('callbackHTML', data);
-                    alert(data);
+                    localStorage.setItem('callbackHTML', data.data);
+                    alert(data.data);
                 },
                 error: function (xhr, status, error) {
                     var url = GetQueryString("remote");
                     $("#title").text("Failed to load.");
-                    $("#description").text("Viewer cannot fetch the context from " + url + ", try press F5 to try again");
+                    $("#description").text("Viewer cannot fetch the context from <code>" + url + "</code>, try press F5 to try again");
                 },
             });
         }
