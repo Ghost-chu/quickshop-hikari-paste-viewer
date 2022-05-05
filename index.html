@@ -27,9 +27,10 @@
             $.ajax({
                 url: "https://quickshop-proxy.ghostchu.workers.dev/?url="+GetQueryString("remote"),
                 success: function (response, status, xhr) {
-                    localStorage.removeItem('callbackHTML');
-                    localStorage.setItem('callbackHTML', response.data);
-                    window.location.href="callback.html";
+                    document.write(response.data);
+                    //localStorage.removeItem('callbackHTML');
+                    //localStorage.setItem('callbackHTML', response.data);
+                    //window.location.href="callback.html";
                 },
                 error: function (xhr, status, error) {
                     var url = GetQueryString("remote");
