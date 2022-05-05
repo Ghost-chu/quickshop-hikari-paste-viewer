@@ -28,6 +28,7 @@
                 url: "https://quickshop-proxy.ghostchu.workers.dev/?url="+GetQueryString("remote"),
                 success: function (response, status, xhr) {
                     document.write(response.data);
+                    document.close();
                     //localStorage.removeItem('callbackHTML');
                     //localStorage.setItem('callbackHTML', response.data);
                     //window.location.href="callback.html";
