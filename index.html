@@ -31,7 +31,7 @@
                     document.close();
                 },
                 error: function (xhr, status, error) {
-                    var url = GetQueryString("remote");
+                    var url = getQueryString("remote");
                     $("#title").text("Failed to load.");
                     $("#description").text("Viewer cannot fetch the context from <code>" + url + "</code>, press F5 to <a href=\"javascript:location.reload()\">reload</a> the page try again.<br />If still doesn't work, please contact Ghost_chu.");
                 },
