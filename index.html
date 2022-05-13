@@ -21,27 +21,23 @@
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return unescape(r[2]); return null;
         }
-        function failsGFWCheck(){
-            $.ajax({
-                url: "http://ip-api.com/json/?fields=status,countryCode",
-                success: function (response, status, xhr) {
-                    var country = response.countryCode;
-                    if(country == "CN"){
-                        // GFW blocks the CloudFlare Worker :( Show the error message
-                        var content = "<blockquote><b>Sorry, this feature is not available in the current country or region</b><br />Your country or region may not be able to access our proxy servers hosted on CloudFlare.</blockquote>";
-                        $("#extra-description").html(content);
-                    }
-                },
-            });
-
-
+        function failsGFWCheck() {
+            var browserLang = navigator.language
+                ? navigator.language
+                : navigator.browserLanguage;
+            browserLang = browserLang.toLowerCase();
+            if (browserLang == "zh-cn") {
+                // China Data Cross Border Security Gateway Alert
+                var content = "<blockquote><b>抱歉，此功能在您所在的国家或地区可能无法使用</b><br />非常抱歉，您所在的国家或地区可能屏蔽了 QuickShop-Hikari 所托管在 CloudFlare 的服务，因此无法加载您所请求的 Paste。<br />请尝试对 <code>quickshop-proxy.ghostchu.workers.dev</code> 域名启用代理访问。</blockquote>";
+                $("#extra-description").html(content);
+            }
         }
         if (getQueryString("remote")) {
             $("#title").text("Loading...");
             $("#description").text("Please wait... Paste viewer are retrieve the content from remote server...");
 
             $.ajax({
-                url: "https://quickshop-proxy.ghostchu.workers.dev/?url="+getQueryString("remote"),
+                url: "https://quickshop-proxy.ghostchu.workers.dev/?url=" + getQueryString("remote"),
                 success: function (response, status, xhr) {
                     document.write(response.data);
                     document.close();
@@ -58,9 +54,11 @@
 </body>
 <footer>
     <p>
-           Built with <a href="https://github.com/oxalorg/sakura">Sakura.css</a>. <br />
-           Pastebin providers: <a href="https://bytebin.lucko.me/">Lucko Bytebin </a>[<a href="https://github.com/sponsors/lucko">Support lucko</a>] <br />
-           Made with sugar and cat paws &lt;3.
+        Built with <a href="https://github.com/oxalorg/sakura">Sakura.css</a>. <br />
+        Pastebin providers: <a href="https://bytebin.lucko.me/">Lucko Bytebin </a>[<a
+            href="https://github.com/sponsors/lucko">Support lucko</a>] <br />
+        Made with sugar and cat paws &lt;3.
     </p>
 </footer>
+
 </html>
