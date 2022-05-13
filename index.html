@@ -27,7 +27,7 @@
                 success: function (response, status, xhr) {
                     var country = response.countryCode;
                     if(country == "CN"){
-                        // GFW blocks the CloudFlare Worker :(
+                        // GFW blocks the CloudFlare Worker :( Show the error message
                         var content = "<blockquote><b>Sorry, this feature is not available in the current country or region</b><br />Your country or region may not be able to access our proxy servers hosted on CloudFlare.</blockquote>";
                         $("#extra-description").html(content);
                     }
