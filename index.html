@@ -28,7 +28,7 @@
             browserLang = browserLang.toLowerCase();
             if (browserLang == "zh-cn") {
                 // China Data Cross Border Security Gateway Alert
-                var content = "<blockquote><b>抱歉，此功能在您所在的国家或地区可能无法使用</b><br />非常抱歉，您所在的国家或地区可能屏蔽了 QuickShop-Hikari 所托管在 CloudFlare 的服务，因此无法加载您所请求的 Paste。<br />请尝试对 <code>quickshop-proxy.ghostchu.workers.dev</code> 域名启用代理访问。</blockquote>";
+                var content = "<blockquote><b>抱歉，此功能在您所在的国家或地区可能无法使用</b><br />非常抱歉，您所在的国家或地区可能屏蔽了 QuickShop-Hikari 所托管在 CloudFlare 的服务，因此无法加载您所请求的 Paste。<br />请尝试对 <code>quickshop-proxy.ghostchu.workers.dev</code> 域名启用代理访问。<details><summary>或者尝试创建本地 Paste</summary>使用命令+附加参数: <code>/qs paste --file</code>生成本地 Paste 并在浏览器中打开。</details></blockquote>";
                 $("#extra-description").html(content);
             }
         }
